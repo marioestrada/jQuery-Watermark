@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<head>
+	<title>jQuery Placeholder</title>
+	<style type="text/css" media="screen">
+		body{
+			background: #E3F6F6;
+			font-family: Helvetica, Arial, sans-serif;
+		}
+		fieldset{
+			margin: 10px;
+			border: 1px solid #D1E5E5;
+			background: #fff;
+		}
+		p.info{
+			background: #ffc;
+			border: 3px dashed #FFE793;
+			padding: 10px;
+			border-radius: 10px;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+		}
+	</style>
+</head>
+<body>
+<h1>jQuery Watermark - Example</h1>
+<form action="http://mario.ec" method="post" accept-charset="utf-8">
+	<fieldset id="login" class="">
+		<legend>Login</legend>
+		<input title="Username" type="text" name="usuario" value="" id="usuario" class="jq_watermark" />
+		<input title="Password" type="password" name="password" value="" id="password" class="jq_watermark" />
+		<input type="submit" name="submit" value="Go" id="submit">
+	</fieldset>
+	
+	<fieldset id="other" class="">
+		<legend>Other</legend>
+		<label for="correo">Email:</label><input title="hi@hello.com" type="text" name="correo" value="" id="correo" class="jq_watermark" />
+	</fieldset>
+</form>
+<p class="info">
+	No CSS rules are required for the plugin to work, although you're free to use them. <br />
+	To use just add the class 'jq_watermark' to the form elements and a title attribute to use as the watermarker text.
+</p>
+
+<!-- <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  // Load jQuery
+  google.load("jquery", "1");
+</script> -->
+<script type="text/javascript" src="jquery/jquery.js"></script>
+<script type="text/javascript" src="jquery.watermark.js"></script>
+</body>
