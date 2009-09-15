@@ -1,6 +1,6 @@
 /*
  * jQuery Watermark plugin
- * Version 0.9 (17-JUL-2009)
+ * Version 1.0 (14-SEP-2009)
  * @requires jQuery v1.2.3 or later
  *
  * Examples at: http://mario.ec/projects/jqwatermark/
@@ -72,11 +72,16 @@
 	
 	checkVal = function(val, elem)
 	{
-		if(val == '') $(elem).show();
-		else $(elem).hide();
+		if(val == '') 
+			$(elem).show();
+		else 
+			$(elem).hide();
 	};
 	
-	$('input.jq_watermark[type=text], textarea.jq_watermark, input[type=password].jq_watermark,').each(function(){
-		$(this).watermark();
+	$(document).ready(function()
+	{
+		$('input.jq_watermark[type=text], textarea.jq_watermark, input[type=password].jq_watermark,').each(function(){
+			$(this).watermark();
+		});
 	});
 })(jQuery);
