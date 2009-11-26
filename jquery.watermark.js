@@ -67,6 +67,10 @@
 			.keydown(function(e)
 			{
 				$(watermark_label).hide();
+			})
+			.change(function()
+			{
+				checkVal($(this).val(), watermark_label);
 			});
 		});
 	};
