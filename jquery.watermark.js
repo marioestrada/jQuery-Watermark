@@ -21,6 +21,13 @@
 		setDefaults: function(settings)
 		{
 			$.extend( $.watermarker.defaults, settings );
+		},
+		checkVal: function(val, label)
+		{
+			if(val == '') 
+				$(label).show();
+			else 
+				$(label).hide();
 		}
 	});
 	
@@ -52,7 +59,7 @@
 				var height = $elem.css('line-height');
 			}
 			
-			checkVal($elem.val(), watermark_label);
+			$.watermarker.checkVal($elem.val(), watermark_label);
 			
 			watermark_label.css({
 				position: 'absolute',
@@ -75,12 +82,12 @@
 			$elem.before(watermark_label)
 			.focus(function()
 			{
-				checkVal($(this).val(), watermark_label);
+				$.watermarker.checkVal($(this).val(), watermark_label);
 				watermark_label.animate({ opacity : 0.7}, 250);
 			})
 			.blur(function()
 			{
-				checkVal($(this).val(), watermark_label);
+				$.watermarker.checkVal($(this).val(), watermark_label);
 				watermark_label.animate({ opacity : 1}, 250);
 			})
 			.keydown(function(e)
@@ -88,15 +95,6 @@
 				$(watermark_label).hide();
 			});
 		});
-	};
-	
-	
-	checkVal = function(val, label)
-	{
-		if(val == '') 
-			$(label).show();
-		else 
-			$(label).hide();
 	};
 	
 	$(document).ready(function()
