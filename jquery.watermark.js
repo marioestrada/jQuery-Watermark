@@ -1,6 +1,6 @@
 /*
  * jQuery Watermark plugin
- * Version 1.0-rc2 (12-NOV-2009)
+ * Version 1.0-rc3 (27-NOV-2009)
  * @requires jQuery v1.2.3 or later
  *
  * Examples at: http://mario.ec/static/jq-watermark/
@@ -12,11 +12,21 @@
 
 (function($)
 {
-	$.fn.watermark = function(text, css_options){
-		css = $.extend({
+	$.watermarker = function(){};	
+	$.extend($.watermarker, {
+		defaults: {
 			color : '#999',
-			left: 4
-		}, css_options);
+			left: 4			
+		},
+		setDefaults: function(settings)
+		{
+				$.extend( $.watermarker.defaults, settings );
+		}
+	});
+	
+	$.fn.watermark = function(text, css_options){
+		var defaults;
+		var css = $.extend($.watermarker.defaults, css_options);
 		
 		return this.each(function()
 		{
@@ -49,12 +59,12 @@
 				fontFamily: $elem.css('font-family'),
 				fontSize: $elem.css('font-size'),
 				color: css.color,
-				left: (parseInt($elem.css('padding-left')) + css.left) + 'px',
+				left: css.left,
 				top: top,
 				height: height + 'px',
 				lineHeight: height + 'px',
 				marginTop: '-' + (height / 2) + 'px',
-				marginLeft: $elem.css('margin-left')
+				marginLeft: parseInt($elem.css('margin-left')) + parseInt($elem.css('padding-left'))
 			});
 			
 			watermark_label.click(function()
@@ -79,6 +89,7 @@
 			});
 		});
 	};
+	
 	
 	checkVal = function(val, label)
 	{
