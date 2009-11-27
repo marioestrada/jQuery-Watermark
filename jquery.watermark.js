@@ -20,15 +20,15 @@
 		},
 		setDefaults: function(settings)
 		{
-				$.extend( $.watermarker.defaults, settings );
+			$.extend( $.watermarker.defaults, settings );
 		}
 	});
 	
 	$.fn.watermark = function(text, css_options){
 		var defaults;
 		var css = $.extend($.watermarker.defaults, css_options);
-		
-		return this.each(function()
+		var elems = this.filter('input[type=text], input[type=password], textarea');
+		return elems.each(function()
 		{
 			var $elem = $(this);
 			var label_text = text === undefined ? $(this).attr('title') : title;
@@ -101,7 +101,7 @@
 	
 	$(document).ready(function()
 	{
-		$('input.jq_watermark[type=text], textarea.jq_watermark, input[type=password].jq_watermark,').each(function(){
+		$('.jq_watermark,').each(function(){
 			$(this).watermark();
 		});
 	});
