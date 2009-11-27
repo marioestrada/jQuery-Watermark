@@ -3,7 +3,7 @@
  * Version 1.0-rc2 (12-NOV-2009)
  * @requires jQuery v1.2.3 or later
  *
- * Examples at: http://mario.ec/static/jqwatermark/
+ * Examples at: http://mario.ec/static/jq-watermark/
  * Copyright (c) 2009 Mario Estrada
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/mit-license.php
