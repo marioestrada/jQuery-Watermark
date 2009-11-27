@@ -21,6 +21,13 @@
 			-webkit-border-radius: 10px;
 			-moz-border-radius: 10px;
 		}
+		textarea{
+			border: 2px dashed #bbb;
+			padding: 4px;
+			border-radius: 4px;
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+		}
 	</style>
 </head>
 <body>
@@ -35,7 +42,10 @@
 	
 	<fieldset id="other" class="">
 		<legend>Other</legend>
-		<label for="correo">Email:</label><input title="hi@hello.com" type="text" name="correo" value="" id="correo" class="jq_watermark" />
+		<label for="correo">Email:</label><input title="hi@hello.com" type="text" name="correo" value="" id="correo" class="jq_watermark" /><br /><br/>
+		
+		<label for="comments">Comments:</label><br />
+		<textarea id="comments" title="Tell us what you think..." class="jq_watermark" rows="3" cols="80"></textarea>
 	</fieldset>
 </form>
 <p class="info">

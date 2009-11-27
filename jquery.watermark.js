@@ -26,13 +26,22 @@
 			var watermark_label = $('<span class="watermark">' + label_text + '</span>');
 			
 			watermark_container.css({
-				float: $elem.css('float')
+				float: $elem.css('float'),
+				height: $elem.css('height')
 			});
 			
 			$elem.wrap(watermark_container);
 			
-			var height = $elem.outerHeight();
-
+			if(this.nodeName != 'TEXTAREA')
+			{
+				var height = $elem.outerHeight();
+				var top = '50%';
+			}else{
+				var pos = $elem.position();
+				var top = pos.top + parseInt($elem.css('padding-top')) + parseInt($elem.css('margin-top')) + parseInt($elem.css('border-top-width'));
+				var height = $elem.css('line-height');
+			}
+			
 			checkVal($elem.val(), watermark_label);
 			
 			watermark_label.css({
@@ -41,7 +50,7 @@
 				fontSize: $elem.css('font-size'),
 				color: css.color,
 				left: (parseInt($elem.css('padding-left')) + css.left) + 'px',
-				top: '50%',
+				top: top,
 				height: height + 'px',
 				lineHeight: height + 'px',
 				marginTop: '-' + (height / 2) + 'px',
