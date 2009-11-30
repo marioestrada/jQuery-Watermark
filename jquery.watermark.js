@@ -47,7 +47,7 @@
 				height: $elem.css('height')
 			});
 			
-			$elem.wrap(watermark_container);
+			$elem.addClass('jq_watermark').wrap(watermark_container);
 			
 			if(this.nodeName != 'TEXTAREA')
 			{
@@ -76,7 +76,7 @@
 			
 			watermark_label.click(function()
 			{
-				$(this).next().focus();
+				$(this).siblings('.jq_watermark:first').focus();
 			})
 
 			$elem.before(watermark_label)
