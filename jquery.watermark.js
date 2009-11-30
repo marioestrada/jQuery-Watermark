@@ -1,6 +1,6 @@
 /*
  * jQuery Watermark plugin
- * Version 1.0 (27-NOV-2009)
+ * Version 1.0.1 (30-NOV-2009)
  * @requires jQuery v1.2.3 or later
  *
  * Examples at: http://mario.ec/static/jq-watermark/
@@ -76,7 +76,7 @@
 			
 			watermark_label.click(function()
 			{
-				$(this).siblings('.jq_watermark:first').focus();
+				$(this).siblings('.jq_watermark:visible:last').focus();
 			})
 
 			$elem.before(watermark_label)
