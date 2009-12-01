@@ -1,6 +1,6 @@
 /*
  * jQuery Watermark plugin
- * Version 1.0.1 (30-NOV-2009)
+ * Version 1.0.2 (30-NOV-2009)
  * @requires jQuery v1.2.3 or later
  *
  * Examples at: http://mario.ec/static/jq-watermark/
@@ -34,8 +34,9 @@
 	$.fn.watermark = function(text, css_options){
 		var defaults;
 		var css = $.extend($.watermarker.defaults, css_options);
+		
 		var elems = this.filter('input[type=text], input[type=password], textarea');
-		return elems.each(function()
+		elems.each(function()
 		{
 			var $elem = $(this);
 			var label_text = text === undefined ? $(this).attr('title') : title;
@@ -47,7 +48,7 @@
 				height: $elem.css('height')
 			});
 			
-			$elem.addClass('jq_watermark').wrap(watermark_container);
+			$elem.wrap(watermark_container);
 			
 			if(this.nodeName != 'TEXTAREA')
 			{
@@ -72,13 +73,13 @@
 				lineHeight: height + 'px',
 				marginTop: '-' + (height / 2) + 'px',
 				marginLeft: parseInt($elem.css('margin-left')) + parseInt($elem.css('padding-left'))
-			});
+			}).data('jq_watermark_element', $elem);
 			
 			watermark_label.click(function()
 			{
-				$(this).siblings('.jq_watermark:visible:last').focus();
-			})
-
+				$($(this).data('jq_watermark_element')).focus();
+			});
+			
 			$elem.before(watermark_label)
 			.focus(function()
 			{
@@ -95,6 +96,8 @@
 				$(watermark_label).hide();
 			});
 		});
+		
+		return this;
 	};
 	
 	$(document).ready(function()
