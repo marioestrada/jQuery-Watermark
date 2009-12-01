@@ -44,8 +44,8 @@
 			var watermark_label = $('<span class="watermark">' + label_text + '</span>');
 			
 			watermark_container.css({
-				float: $elem.css('float'),
-				height: $elem.css('height')
+				'float': $elem.css('float'),
+				'height': $elem.css('height')
 			});
 			
 			$elem.wrap(watermark_container);
