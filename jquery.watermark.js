@@ -110,6 +110,6 @@
 	
 	$(document).ready(function()
 	{
-		$('.jq_watermark,').watermark();
+		$('.jq_watermark').watermark();
 	});
 })(jQuery);
