@@ -34,18 +34,24 @@
 	$.fn.watermark = function(text, css_options){
 		var defaults;
 		var css = $.extend($.watermarker.defaults, css_options);
-		
 		var elems = this.filter('input[type=text], input[type=password], textarea');
+		
 		elems.each(function()
 		{
 			var $elem = $(this);
-			var label_text = text === undefined ? $(this).attr('title') : title;
-			var watermark_container = $('<span class="watermark_container" style="position: relative"></span>');
+			var attr_name = $elem.attr('placeholder') != undefined && $elem.attr('placeholder') != '' ? 'placeholder' : 'title';
+			var label_text = text === undefined ? $(this).attr(attr_name) : text;
+			var watermark_container = $('<span class="watermark_container"></span>');
 			var watermark_label = $('<span class="watermark">' + label_text + '</span>');
 			
+			// If used, remove the placeholder attribute to prevent conflicts
+ 			if(attr_name == 'placeholder')
+				$elem.removeAttr('placeholder');
+			
+			// 
 			watermark_container.css({
-				'float': $elem.css('float'),
-				'height': $elem.css('height')
+				float: $elem.css('float'),
+				position: 'relative'
 			});
 			
 			$elem.wrap(watermark_container);
@@ -68,6 +74,8 @@
 				fontSize: $elem.css('font-size'),
 				color: css.color,
 				left: css.left,
+				right: 0,
+				bottom: 0,
 				top: top,
 				height: height + 'px',
 				lineHeight: height + 'px',
@@ -102,8 +110,6 @@
 	
 	$(document).ready(function()
 	{
-		$('.jq_watermark,').each(function(){
-			$(this).watermark();
-		});
+		$('.jq_watermark,').watermark();
 	});
 })(jQuery);
