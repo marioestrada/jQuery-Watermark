@@ -1,6 +1,6 @@
 /*
  * jQuery Watermark plugin
- * Version 1.0.2 (30-NOV-2009)
+ * Version 1.0.4 (7-DIC-2009)
  * @requires jQuery v1.2.3 or later
  *
  * Examples at: http://mario.ec/static/jq-watermark/
@@ -38,12 +38,15 @@
 		
 		elems.each(function()
 		{
-			var $elem, attr_name, label_text, watermark_container, watermark_label, pos, top, height;
+			var $elem, attr_name, label_text, watermark_container, watermark_label;
+			var e_margin_left, e_margin_top, pos, top, height, line_height;
+			
 			$elem = $(this);
 			attr_name = $elem.attr('placeholder') != undefined && $elem.attr('placeholder') != '' ? 'placeholder' : 'title';
-			label_text = text === undefined ? $(this).attr(attr_name) : text;
+			label_text = text === undefined || text === '' ? $(this).attr(attr_name) : text;
 			watermark_container = $('<span class="watermark_container"></span>');
 			watermark_label = $('<span class="watermark">' + label_text + '</span>');
+			
 			
 			// If used, remove the placeholder attribute to prevent conflicts
  			if(attr_name == 'placeholder')
@@ -55,32 +58,36 @@
 			});
 			
 			$elem.wrap(watermark_container);
-			
-			if(this.nodeName != 'TEXTAREA')
+			if(this.nodeName.toLowerCase() != 'textarea')
 			{
 				height = $elem.outerHeight();
 				top = '50%';
+				line_height = height + 'px';
 			}else{
-				pos = $elem.position();
-				top = pos.top + parseInt($elem.css('padding-top')) + parseInt($elem.css('margin-top')) + parseInt($elem.css('border-top-width'));
-				height = $elem.css('line-height');
+                pos = $elem.position();
+				e_margin_top = $elem.css('margin-top') !== 'auto' ? parseInt($elem.css('margin-top')) : 0;
+                top = pos.top + parseInt($elem.css('padding-top')) + e_margin_top + parseInt($elem.css('border-top-width'));
+                line_height = $elem.css('line-height');
+				height = line_height === 'normal' ? parseInt($elem.css('font-size')) : line_height;
 			}
+			
+			e_margin_left = $elem.css('margin-left') !== 'auto' ? parseInt($elem.css('margin-left')) : '0';
 			
 			$.watermarker.checkVal($elem.val(), watermark_label);
 			
 			watermark_label.css({
-				position: 'absolute',
-				fontFamily: $elem.css('font-family'),
-				fontSize: $elem.css('font-size'),
-				color: css.color,
-				left: css.left,
-				right: 0,
-				bottom: 0,
-				top: top,
-				height: height + 'px',
-				lineHeight: height + 'px',
-				marginTop: '-' + (height / 2) + 'px',
-				marginLeft: parseInt($elem.css('margin-left')) + parseInt($elem.css('padding-left'))
+            	position: 'absolute',
+	            fontFamily: $elem.css('font-family'),
+	            fontSize: $elem.css('font-size'),
+	            color: css.color,
+	            left: css.left,
+	            right: 0,
+	            bottom: 0,
+	            top: top,
+	            height: height + 'px',
+	            lineHeight: line_height,
+	            marginTop: '-' + (height / 2) + 'px',
+	            marginLeft: e_margin_left + parseInt($elem.css('padding-left'))
 			}).data('jq_watermark_element', $elem);
 			
 			watermark_label.click(function()
