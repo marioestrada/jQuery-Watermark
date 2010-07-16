@@ -3,24 +3,61 @@
 
 <head>
 	<title>jQuery Placeholder</title>
+	<link href='http://fonts.googleapis.com/css?family=Molengo' rel='stylesheet' type='text/css'>
 	<style type="text/css" media="screen">
 		body{
-			background: #E3F6F6;
+			background: #f0f0f0 url(http://mario.ec/images/body_bg.png);
 			font-family: Helvetica, Arial, sans-serif;
+			margin: 10px;
+		}
+		h1{
+			font-family: Gill Sans, Gill Sans MT, Century Gothic, helvetica, arial, serif;
+			font-weight: normal;
+		}
+		div.message{
+			padding: 5px 10px;
+			margin: -10px -10px 0 -10px;
+			background: #672781;
+			border-bottom: 1px solid #000;
+			text-shadow: 0 1px 1px #000;
+			background: -webkit-gradient(linear, left top, left bottom, from(#8632a9), to(#672781));
+			background: -moz-linear-gradient(-90deg, #8632a9, #672781);
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+			-mox-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+			box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+		}
+		div.message p{
+			padding: 0;
+			margin: 0;
+			color: #fff;		
+		}
+		div.message a,
+		div.message a:visited{
+			color: #64c0b2;
+			text-decoration: none;	
+		}
+		div.message a:hover{
+			text-decoration: underline;
 		}
 		fieldset{
 			margin: 10px;
-			border: 1px solid #D1E5E5;
+			border: 1px solid #d0d0d0;
 			background: #fff;
-			padding: 0 10px 10px;
+			padding: 5px 10px 10px;
 		}
 		#submit{
 			font-size: 0.8em;
 			height: 23px;
 		}
 		legend{
+			font-family: Gill Sans, Gill Sans MT, Century Gothic, helvetica, arial, serif;
+			font-variant: small-caps;
 			margin-bottom: 10px;
 			font-size: 1em;
+		}
+		label{
+			font-family: Gill Sans, Gill Sans MT, Century Gothic, helvetica, arial, serif;
+			font-style: italic;
 		}
 		p.info{
 			background: #ffc;
@@ -40,6 +77,9 @@
 	</style>
 </head>
 <body>
+<div class="message">
+	<p>Go back to the developer's website: <a href="http://mario.ec">Mario.ec</a></p>
+</div>
 <h1>jQuery Watermark - Example</h1>
 <form action="http://mario.ec" method="post" accept-charset="utf-8">
 	<fieldset id="login" class="">
@@ -60,6 +100,11 @@
 <p class="info">
 	No CSS rules are required for the plugin to work, although you're free to use them. <br />
 	To use just add the class 'jq_watermark' to the form elements and a title attribute to use as the watermarker text.
+</p>
+
+<p class="info">
+	Developer website: <a href="http://mario.ec/">Mario Estrada</a>
+	Source Code: <a href="http://code.google.com/p/jq-watermark/">Google Code</a>
 </p>
 
 <!-- <script src="http://www.google.com/jsapi" type="text/javascript"></script>
