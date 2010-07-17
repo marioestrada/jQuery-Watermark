@@ -19,7 +19,8 @@
 		defaults: {
 			color : '#999',
 			left: 0,
-			top: 0	
+			top: 0,
+			fallback: false
 		},
 		setDefaults: function(settings)
 		{
@@ -31,13 +32,20 @@
 				$(label).show();
 			else 
 				$(label).hide();
-		}
+		},
+		html5_support: function() {
+            var i = document.createElement('input');
+            return 'placeholder' in i;
+        }
 	});
 	
-	$.fn.watermark = function(text, css_options){
-		var css, elems;
-		css = $.extend($.watermarker.defaults, css_options);
+	$.fn.watermark = function(text, options){
+		var options, elems;
+		options = $.extend($.watermarker.defaults, options);
 		elems = this.filter('input[type=text], input[type=password], input[type=email], input[type=url], input[type=search], textarea');
+		
+		if(options.fallback && $.watermarker.html5_support())
+		    return;
 		
 		elems.each(function()
 		{
@@ -91,9 +99,9 @@
 				display: 'block',
 	            fontFamily: $elem.css('font-family'),
 	            fontSize: $elem.css('font-size'),
-	            color: css.color,
-	            left: hard_left + css.left + e_margin_left,
-	            top: css.top + e_top,
+	            color: options.color,
+	            left: hard_left + options.left + e_margin_left,
+	            top: options.top + e_top,
 	            height: e_height,
 	            lineHeight: e_height + 'px',
 	            textAlign: 'left'
