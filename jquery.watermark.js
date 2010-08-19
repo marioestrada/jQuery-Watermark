@@ -1,6 +1,6 @@
 /*
  * jQuery Watermark plugin
- * Version 1.1.1 (16-JUL-2010) CUSTOM
+ * Version 1.1.2 (19-AUG-2010)
  * @requires jQuery v1.2.3 or later
  *
  * Examples at: http://mario.ec/static/jq-watermark/
@@ -92,8 +92,6 @@
 			e_margin_left = $elem.css('margin-left') != 'auto' ? parseInt($elem.css('margin-left')) : 0;
 			e_margin_left += $elem.css('padding-left') != 'auto' ? parseInt($elem.css('padding-left')) : 0;
 			
-			$.watermarker.checkVal($elem.val(), watermark_label);
-			
 			watermark_label.css({
 				position: 'absolute',
 				display: 'block',
@@ -106,6 +104,8 @@
 	            lineHeight: e_height + 'px',
 	            textAlign: 'left'
 			}).data('jq_watermark_element', $elem);
+			
+			$.watermarker.checkVal($elem.val(), watermark_label);
 			
 			watermark_label.click(function()
 			{
