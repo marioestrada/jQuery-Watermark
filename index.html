@@ -68,6 +68,10 @@
 			-moz-border-radius: 10px;
 			border-radius: 10px;
 		}
+		p.alt{
+			background-color: #dadada !important;
+			border-color: #b9b9b9 !important;
+		}
 		textarea{
 			padding: 8px;
 		}
@@ -112,6 +116,12 @@
 	<p>Visit the developer's website: <a href="http://mario.ec">Mario.ec</a></p>
 </div>
 <h1>jQuery Watermark - Example</h1>
+
+<p class="info">
+	No CSS rules are required for the plugin to work, although you're free to use them. <br />
+	To use just add the class 'jq_watermark' to the form elements and a title attribute to use as the watermarker text.
+</p>
+
 <form action="http://mario.ec" method="post" accept-charset="utf-8">
 	<fieldset id="login" class="">
 		<legend>Login</legend>
@@ -130,17 +140,13 @@
 		<textarea id="comments" placeholder="Tell us what you think..." class="jq_watermark" rows="3" cols="80"></textarea>
 	</fieldset>
 </form>
-<p class="info">
-	No CSS rules are required for the plugin to work, although you're free to use them. <br />
-	To use just add the class 'jq_watermark' to the form elements and a title attribute to use as the watermarker text.
-</p>
 
 <p class="info">
 	License: <a href="http://www.opensource.org/licenses/mit-license.php">MIT</a>
 	Source Code: <a href="http://code.google.com/p/jq-watermark/">Google Code</a>
 </p>
 
-<p class="info">
+<p class="info alt">
 	Developer website: <a href="http://mario.ec/">Mario Estrada</a>
 </p>
 
