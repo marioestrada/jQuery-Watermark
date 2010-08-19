@@ -58,21 +58,37 @@
 		label{
 			font-family: Gill Sans, Gill Sans MT, Century Gothic, helvetica, arial, serif;
 			font-style: italic;
+			margin-right: 10px;
 		}
 		p.info{
 			background: #ffc;
 			border: 3px dashed #FFE793;
 			padding: 10px;
-			border-radius: 10px;
 			-webkit-border-radius: 10px;
 			-moz-border-radius: 10px;
+			border-radius: 10px;
 		}
 		textarea{
-			border: 2px dashed #bbb;
 			padding: 8px;
-			border-radius: 4px;
-			-moz-border-radius: 4px;
-			-webkit-border-radius: 4px;
+		}
+		form input{
+			background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#fff));
+			background: -moz-linear-gradient(-90deg, #f6f6f6, #fff);
+			height: 20px;
+			margin-bottom: 5px;			
+		}
+		form input,
+		form textarea{
+			border: 1px solid #bbb;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;
+		}
+		form input[type=submit]{
+			background: -webkit-gradient(linear, left top, left bottom, to(#ddd), from(#eee));
+			background: -moz-linear-gradient(90deg, #ddd, #eee);
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 		}
 	</style>
 </head>
@@ -92,7 +108,7 @@
 	<fieldset id="other" class="">
 		<legend>Other</legend>
 		<label for="correo">Email:</label><input placeholder="hi@hello.com" type="text" name="correo" value="" id="correo" class="jq_watermark" /><br />
-		<label for="more">More:</label><input placeholder="More" type="text" name="more" value="This field has predefined content" id="more" class="jq_watermark" style="width: 400px" /><br />
+		<label for="more">More:</label><input placeholder="More about yourself" type="text" name="more" value="This field has predefined content" id="more" class="jq_watermark" style="width: 400px" /><br />
 		<br/>
 		
 		<label for="comments">Comments:</label><br />
