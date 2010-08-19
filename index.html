@@ -72,23 +72,38 @@
 			padding: 8px;
 		}
 		form input{
-			background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#fff));
-			background: -moz-linear-gradient(-90deg, #f6f6f6, #fff);
 			height: 20px;
-			margin-bottom: 5px;			
+			margin-bottom: 5px;	
 		}
 		form input,
 		form textarea{
+			background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#fff));
+			background: -moz-linear-gradient(-90deg, #f6f6f6, #fff);
 			border: 1px solid #bbb;
 			-webkit-border-radius: 5px;
 			-moz-border-radius: 5px;
 			border-radius: 5px;
 			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;
+			box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;
 		}
 		form input[type=submit]{
 			background: -webkit-gradient(linear, left top, left bottom, to(#ddd), from(#eee));
 			background: -moz-linear-gradient(90deg, #ddd, #eee);
 			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+			box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+		}
+		form input:focus,
+		form textarea:focus{
+			outline: none;
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset, 0 0 2px 1px rgba(237, 187, 66, 0.5);
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset, 0 0 2px 1px rgba(237, 187, 66, 0.5);
+			box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset, 0 0 2px 1px rgba(237, 187, 66, 0.5);
+		}
+		form input,
+		form textarea{
+			-webkit-background-clip: padding-box;
 		}
 	</style>
 </head>
