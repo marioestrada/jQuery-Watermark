@@ -76,6 +76,7 @@
 			padding: 8px;
 		}
 		form input{
+			margin-top: 5px;
 			height: 20px;
 			margin-bottom: 5px;	
 		}
@@ -109,6 +110,12 @@
 		form textarea{
 			-webkit-background-clip: padding-box;
 		}
+		#hidden_fields .hidden{
+			display: none;
+		}
+		#hidden_fields:hover .hidden{
+			display: block;			
+		}
 	</style>
 </head>
 <body>
@@ -138,6 +145,14 @@
 		
 		<label for="comments">Comments:</label><br />
 		<textarea id="comments" placeholder="Tell us what you think..." class="jq_watermark" rows="3" cols="80"></textarea>
+	</fieldset>
+	
+	<fieldset id="hidden_fields" class="">
+		<legend>Test hidden fields</legend>
+		<div class="hidden">
+		<label for="post">Postal Code:</label><input placeholder="33131" type="text" name="post" value="" id="post" class="jq_watermark" /><br />
+		<label for="street">Street Number:</label><input placeholder="5th Ave." type="text" name="street" value="" id="street" class="jq_watermark" style="width: 400px" /><br />
+		</div>
 	</fieldset>
 </form>
 
@@ -176,4 +191,7 @@ reinvigorate.track("qi88f-u76940ookm");
 </script> -->
 <script type="text/javascript" src="jquery/jquery.source.js"></script>
 <script type="text/javascript" src="jquery.watermark.js"></script>
+<script>
+$('#correo').val('test@gmail.com');
+</script>
 </body>

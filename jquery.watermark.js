@@ -1,6 +1,6 @@
 /*
  * jQuery Watermark plugin
- * Version 1.1.2 (19-AUG-2010)
+ * Version 1.1.5 (2-DEC-2010)
  * @requires jQuery v1.2.3 or later
  *
  * Examples at: http://mario.ec/static/jq-watermark/
@@ -13,25 +13,29 @@
 (function($)
 {
     var old_ie = $.browser.msie && $.browser.version < 8;
-    var hard_left = 4
+    var hard_left = 4;
 	$.watermarker = function(){};	
 	$.extend($.watermarker, {
 		defaults: {
 			color : '#999',
 			left: 0,
 			top: 0,
-			fallback: false
+			fallback: false,
+			animDuration: 300,
+			minOpacity: 0.6
 		},
 		setDefaults: function(settings)
 		{
 			$.extend( $.watermarker.defaults, settings );
 		},
-		checkVal: function(val, label)
+		checkVal: function(val, label, event_blur)
 		{
-			if(val == '') 
+			if(val.length == 0)
 				$(label).show();
 			else 
 				$(label).hide();
+			
+			return val.length > 0;
 		},
 		html5_support: function() {
             var i = document.createElement('input');
@@ -84,10 +88,17 @@
 			    e_height = $elem.css('line-height');
 				e_height = e_height === 'normal' ? parseInt($elem.css('font-size')) : e_height;
 			    e_top = ($elem.css('padding-top') != 'auto' ? parseInt($elem.css('padding-top')):0);
-			    e_top += ($elem.css('margin-top') != 'auto' ? parseInt($elem.css('margin-top')):0);
 		    }else{
 		        e_height = $elem.outerHeight();
-		    }
+		        if(e_height <= 0)
+		        {
+		            e_height = ($elem.css('padding-top') != 'auto' ? parseInt($elem.css('padding-top')):0);
+		            e_height += ($elem.css('padding-bottom') != 'auto' ? parseInt($elem.css('padding-bottom')):0);
+		            e_height += ($elem.css('height') != 'auto' ? parseInt($elem.css('height')):0);
+		        }
+		    }    
+		    
+		    e_top += ($elem.css('margin-top') != 'auto' ? parseInt($elem.css('margin-top')):0);
 			
 			e_margin_left = $elem.css('margin-left') != 'auto' ? parseInt($elem.css('margin-left')) : 0;
 			e_margin_left += $elem.css('padding-left') != 'auto' ? parseInt($elem.css('padding-left')) : 0;
@@ -115,17 +126,21 @@
 			$elem.before(watermark_label)
 			.focus(function()
 			{
-				$.watermarker.checkVal($(this).val(), watermark_label);
-				watermark_label.animate({ opacity : 0.7}, 250);
+				if(!$.watermarker.checkVal($(this).val(), watermark_label))
+    				watermark_label.stop().fadeTo(options.animDuration, options.minOpacity);
 			})
-			.blur(function()
+			.bind('blur change', function()
 			{
-				$.watermarker.checkVal($(this).val(), watermark_label);
-				watermark_label.animate({ opacity : 1}, 250);
+				if(!$.watermarker.checkVal($(this).val(), watermark_label))
+				    watermark_label.stop().fadeTo(options.animDuration, 1);
 			})
 			.keydown(function(e)
 			{
-				$(watermark_label).hide();
+			    $(watermark_label).hide();
+			})
+			.keyup(function(e)
+			{
+			    $.watermarker.checkVal($(this).val(), watermark_label);
 			});
 		});
 		
