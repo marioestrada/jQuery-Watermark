@@ -1,7 +1,7 @@
 /*
  * jQuery Watermark plugin
- * Version 1.1.5 (2-DEC-2010)
- * @requires jQuery v1.2.3 or later
+ * Version 1.2 (7-DEC-2010)
+ * @requires jQuery v1.3 or later
  *
  * Examples at: http://mario.ec/static/jq-watermark/
  * Copyright (c) 2010 Mario Estrada
@@ -46,7 +46,7 @@
 	$.fn.watermark = function(text, options){
 		var options, elems;
 		options = $.extend($.watermarker.defaults, options);
-		elems = this.filter('input[type=text], input[type=password], input[type=email], input[type=url], input[type=search], textarea');
+		elems = this.filter('textarea, input:not(:checkbox,:radio,:file,:submit,:reset)');
 		
 		if(options.fallback && $.watermarker.html5_support())
 		    return;
@@ -113,32 +113,33 @@
 	            top: options.top + e_top,
 	            height: e_height,
 	            lineHeight: e_height + 'px',
-	            textAlign: 'left'
+	            textAlign: 'left',
+	            pointerEvents: 'none'
 			}).data('jq_watermark_element', $elem);
 			
 			$.watermarker.checkVal($elem.val(), watermark_label);
 			
 			watermark_label.click(function()
-			{
-				$($(this).data('jq_watermark_element')).focus();
-			});
+            {
+               $($(this).data('jq_watermark_element')).trigger('focus');
+            });
 			
 			$elem.before(watermark_label)
-			.focus(function()
+			.bind('focus.jq_watermark', function()
 			{
 				if(!$.watermarker.checkVal($(this).val(), watermark_label))
     				watermark_label.stop().fadeTo(options.animDuration, options.minOpacity);
 			})
-			.bind('blur change', function()
+			.bind('blur.jq_watermark change.jq_watermark', function()
 			{
 				if(!$.watermarker.checkVal($(this).val(), watermark_label))
 				    watermark_label.stop().fadeTo(options.animDuration, 1);
 			})
-			.keydown(function(e)
+			.bind('keydown.jq_watermark', function(e)
 			{
 			    $(watermark_label).hide();
 			})
-			.keyup(function(e)
+			.bind('keyup.jq_watermark', function(e)
 			{
 			    $.watermarker.checkVal($(this).val(), watermark_label);
 			});
