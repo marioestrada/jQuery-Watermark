@@ -194,6 +194,9 @@ reinvigorate.track("qi88f-u76940ookm");
 <script type="text/javascript" src="jquery/jquery.source.js"></script>
 <script type="text/javascript" src="jquery.watermark.js"></script>
 <script>
-$('#even_more').val('Field filled programmatically with Javascript.');
+$(document).ready(function()
+{
+	$('#even_more').val('Field filled programmatically with Javascript.').trigger('change');
+});
 </script>
 </body>

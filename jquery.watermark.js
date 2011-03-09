@@ -1,6 +1,6 @@
 /*
  * jQuery Watermark plugin
- * Version 1.2 (7-DEC-2010)
+ * Version 1.2.1 (7-DEC-2010)
  * @requires jQuery v1.3 or later
  *
  * Examples at: http://mario.ec/static/jq-watermark/
@@ -135,7 +135,7 @@
 				if(!$.watermarker.checkVal($(this).val(), watermark_label))
 				    watermark_label.stop().fadeTo(options.animDuration, 1);
 			})
-			.bind('keydown.jq_watermark', function(e)
+			.bind('keydown.jq_watermark, paste.jq_watermark', function(e)
 			{
 			    $(watermark_label).hide();
 			})
@@ -148,8 +148,5 @@
 		return this;
 	};
 	
-	$(document).ready(function()
-	{
-		$('.jq_watermark').watermark();
-	});
+	$('.jq_watermark').watermark();
 })(jQuery);
