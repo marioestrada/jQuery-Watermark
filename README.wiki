@@ -1,0 +1,24 @@
+=jQuery Watermark (Placeholder)=
+
+This plugins let's you add default text on form elements that look like watermarks or work as placeholders, as used on Apple's www.me.com among other websites. This plugin has been developed so that it doesn't need any CSS rules at all, unless you want to add em, and to work in a way to prevent unwanted information to be sent to the server, as can happen with the default watermark text.
+
+*Tested on:* Safari 3+, FF3+, Chrome 3+ & IE6+
+
+=Why Use This Plugin=
+
+I developed this plugin because all other solutions worked by changing the value attribute on input elements and this leads to limitations and problems that I didn't want to have, for example It was not possible apply a 'watermark' or 'hint' on password fields and when the form was submitted the 'placeholder' text would be submitted with the rest of the data.
+
+Summarizing, you should use this plugin because it *works with all kind of text input elements*, even *password fields* and textareas, and since the watermark text is not inserted on the value attribute it will *never be sent back to the server* no matter what. Finally, as a bonus your watermark text *will show even when the element is focused* and will only disappear when there is some input.
+
+Demo:
+http://labs.mario.ec/jq-watermark/
+
+jQuery Plugin page:
+http://plugins.jquery.com/project/jq-watermark
+
+No CSS rules are required for the plugin to work, although you're free to use them. 
+To use just add the class 'jq_watermark' to the form elements and a title attribute to use as the watermarker text.
+
+[http://mario.ec/ http://mario.ec/static/email_sig.png]
+
+Developed by [http://mario.ec Mario Estrada]
