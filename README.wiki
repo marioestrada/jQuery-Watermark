@@ -4,7 +4,9 @@ This plugins let's you add default text on form elements that look like watermar
 
 *Tested on:* Safari 3+, FF3+, Chrome 3+ & IE6+
 
-[[Instructions]]
+=How to use=
+
+* [https://github.com/marioestrada/jQuery-Watermark/wiki/Instructions Instructions]
 
 =Why Use This Plugin=
 
@@ -20,7 +22,5 @@ http://plugins.jquery.com/project/jq-watermark
 
 No CSS rules are required for the plugin to work, although you're free to use them. 
 To use just add the class 'jq_watermark' to the form elements and a title attribute to use as the watermarker text.
-
-[http://mario.ec/ http://mario.ec/static/email_sig.png]
 
 Developed by [http://mario.ec Mario Estrada]
