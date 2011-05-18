@@ -4,7 +4,7 @@ This plugins let's you add default text on form elements that look like watermar
 
 *Tested on:* Safari 3+, FF3+, Chrome 3+ & IE6+
 
-[[Instructions]]
+[[Requirements and Instructions]]
 
 =Why Use This Plugin=
 
