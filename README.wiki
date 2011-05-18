@@ -4,6 +4,8 @@ This plugins let's you add default text on form elements that look like watermar
 
 *Tested on:* Safari 3+, FF3+, Chrome 3+ & IE6+
 
+[[Instructions]]
+
 =Why Use This Plugin=
 
 I developed this plugin because all other solutions worked by changing the value attribute on input elements and this leads to limitations and problems that I didn't want to have, for example It was not possible apply a 'watermark' or 'hint' on password fields and when the form was submitted the 'placeholder' text would be submitted with the rest of the data.
