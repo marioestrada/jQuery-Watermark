@@ -2,7 +2,7 @@
 
 This plugins let's you add default text on form elements that look like watermarks or work as placeholders, as used on Apple's www.me.com among other websites. This plugin has been developed so that it doesn't need any CSS rules at all, unless you want to add em, and to work in a way to prevent unwanted information to be sent to the server, as can happen with the default watermark text.
 
-*Tested on:* Safari 3+, FF3+, Chrome 3+ & IE6+
+* Tested on: Safari 3+, FF3+, Chrome 3+ & IE6+
 
 =How to use=
 
