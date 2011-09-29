@@ -49,7 +49,7 @@
 		elems = this.filter('textarea, input:not(:checkbox,:radio,:file,:submit,:reset)');
 		
 		if(options.fallback && $.watermarker.html5_support())
-		    return;
+		    return this;
 		
 		elems.each(function()
 		{
