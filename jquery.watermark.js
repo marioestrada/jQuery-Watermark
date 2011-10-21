@@ -90,11 +90,15 @@
 			    e_top = ($elem.css('padding-top') != 'auto' ? parseInt($elem.css('padding-top')):0);
 		    }else{
 		        e_height = $elem.outerHeight();
-		        if(e_height <= 0)
+		        if(e_height <= 0 || $elem.height() <= 0)
 		        {
 		            e_height = ($elem.css('padding-top') != 'auto' ? parseInt($elem.css('padding-top')):0);
 		            e_height += ($elem.css('padding-bottom') != 'auto' ? parseInt($elem.css('padding-bottom')):0);
 		            e_height += ($elem.css('height') != 'auto' ? parseInt($elem.css('height')):0);
+		        }
+
+		        if (e_height <= 0) {
+		            e_height = $elem.css('line-height');
 		        }
 		    }    
 		    
