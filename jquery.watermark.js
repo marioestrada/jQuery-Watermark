@@ -1,6 +1,6 @@
 /*
  * jQuery Watermark plugin
- * Version 1.2.1 (7-DEC-2010)
+ * Version 1.3 (24-FEB-2012)
  * @requires jQuery v1.3 or later
  *
  * Examples at: http://mario.ec/static/jq-watermark/
@@ -74,6 +74,9 @@
 				position: 'relative'
 			});
 			
+			if($elem.attr('data-percent-width') == 'true')
+				watermark_container.css('width', '100%');
+			
 			if(old_ie)
 			{
 			    watermark_container.css({
@@ -106,26 +109,26 @@
 			watermark_label.css({
 				position: 'absolute',
 				display: 'block',
-        fontFamily: $elem.css('font-family'),
-        fontSize: $elem.css('font-size'),
-        color: options.color,
-        left: hard_left + options.left + e_margin_left,
-        top: options.top + e_top,
-        height: e_height,
-        lineHeight: e_height + 'px',
-        textAlign: 'left',
-        pointerEvents: 'none'
+		        fontFamily: $elem.css('font-family'),
+		        fontSize: $elem.css('font-size'),
+		        color: options.color,
+		        left: hard_left + options.left + e_margin_left,
+		        top: options.top + e_top,
+		        height: e_height,
+		        lineHeight: e_height + 'px',
+		        textAlign: 'left',
+		        pointerEvents: 'none'
 			}).data('jq_watermark_element', $elem);
 			
 			$.watermarker.checkVal($elem.val(), watermark_label);
 			
 			watermark_label.click(function()
-        {
-           $($(this).data('jq_watermark_element')).trigger('click').trigger('focus');
-        }
-      );
+	        {
+	           $($(this).data('jq_watermark_element')).trigger('click').trigger('focus');
+	        }
+		);
 			
-			$elem.before(watermark_label)
+		$elem.before(watermark_label)
 			.bind('focus.jq_watermark', function()
 			{
 				if(!$.watermarker.checkVal($(this).val(), watermark_label))
@@ -149,5 +152,8 @@
 		return this;
 	};
 	
-	$('.jq_watermark').watermark();
+	$(function()
+	{
+		$('.jq_watermark').watermark();
+	})
 })(jQuery);
