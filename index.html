@@ -163,6 +163,20 @@
 	License: <a href="http://www.opensource.org/licenses/mit-license.php">MIT</a>
 </p>
 
+<!-- <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  // Load jQuery
+  google.load("jquery", "1");
+</script> -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="jquery.watermark.js"></script>
+<script>
+$(document).ready(function()
+{
+	$('#even_more').val('Field filled programmatically with Javascript.').trigger('change');
+});
+</script>
+
 <!-- !Google Tracking -->
 <script type="text/javascript">
 var _gaq = _gaq || [];
@@ -178,25 +192,17 @@ document.documentElement.firstChild.appendChild(ga);
 })();
 </script>
 
-<!-- !Reinvigorate Tracking -->
-<script type="text/javascript" src="http://include.reinvigorate.net/re_.js"></script>
 <script type="text/javascript">
-try {
-reinvigorate.track("qi88f-u76940ookm");
-} catch(err) {}
-</script>
-
-<!-- <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript">
-  // Load jQuery
-  google.load("jquery", "1");
-</script> -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="jquery.watermark.js"></script>
-<script>
-$(document).ready(function()
-{
-	$('#even_more').val('Field filled programmatically with Javascript.').trigger('change');
-});
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4f5e36eff5a1f54e73000025');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
 </script>
 </body>
