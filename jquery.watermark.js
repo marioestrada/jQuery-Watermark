@@ -85,7 +85,7 @@
 			    });
 			}
 			
-			$elem.wrap(watermark_container).attr('data-jq-watermark', 'processed');
+			$elem.attr('data-jq-watermark', 'processed');
 			if(this.nodeName.toLowerCase() == 'textarea')
 			{
 			    e_height = $elem.css('line-height');
