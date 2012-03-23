@@ -1,6 +1,6 @@
 /*
 * jQuery Watermark plugin
-* Version 1.3 (24-FEB-2012)
+* Version 1.3.1 (23-MAR-2012)
 * @requires jQuery v1.3 or later
 *
 * Examples at: http://mario.ec/static/jq-watermark/
