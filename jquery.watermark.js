@@ -11,7 +11,7 @@
 */
 
 (function ($) {
-    var old_ie = $.browser.msie && $.browser.version < 8;
+    var old_ie = $.browser.msie && (!document.documentMode || $.browser.version < 8);
     var hard_left = 4;
     $.watermarker = function () { };
     $.extend($.watermarker, {
@@ -42,7 +42,7 @@
 
     $.fn.watermark = function (text, options) {
         var options, elems;
-        options = $.extend($.watermarker.defaults, options);
+        options = $.extend({}, $.watermarker.defaults, options);
         elems = this.filter('textarea, input:not(:checkbox,:radio,:file,:submit,:reset)');
 
         if (options.fallback && $.watermarker.html5_support())
@@ -120,7 +120,9 @@
             $.watermarker.checkVal($elem.val(), watermark_label);
 
             watermark_label.click(function () {
-                $($(this).data('jq_watermark_element')).trigger('click').trigger('focus');
+                $($(this).data('jq_watermark_element'))
+                	.not('[readonly], [disabled]').filter(':visible')	
+                	.trigger('click').trigger('focus');
             }
 );
 
@@ -146,5 +148,6 @@
 
     $(function () {
         $('.jq_watermark').watermark();
+        $('input[placeholder]:visible').watermark();
     })
 })(jQuery);
