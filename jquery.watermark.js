@@ -42,7 +42,7 @@
 
     $.fn.watermark = function (text, options) {
         var options, elems;
-        options = $.extend($.watermarker.defaults, options);
+        options = $.extend({}, $.watermarker.defaults, options);
         elems = this.filter('textarea, input:not(:checkbox,:radio,:file,:submit,:reset)');
 
         if (options.fallback && $.watermarker.html5_support())
