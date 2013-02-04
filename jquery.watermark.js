@@ -11,7 +11,7 @@
 */
 
 (function ($) {
-    var old_ie = $.browser.msie && $.browser.version < 8;
+    var old_ie = navigator.appName == 'Microsoft Internet Explorer' && $.browser.version < 8;
     var hard_left = 4;
     $.watermarker = function () { };
     $.extend($.watermarker, {
