@@ -51,6 +51,7 @@
         elems.each(function () {
             var $elem, attr_name, label_text, watermark_container, watermark_label;
             var e_margin_left, e_margin_top, pos, e_top = 0, height, line_height;
+            var e_boxSizing; //LG: Added
 
             $elem = $(this);
             if ($elem.attr('data-jq-watermark') == 'processed')
@@ -85,23 +86,31 @@
 
             $elem.wrap(watermark_container).attr('data-jq-watermark', 'processed');
 
+            e_boxSizing = $elem.css('box-sizing'); //LG: Added
             if (this.nodeName.toLowerCase() == 'textarea') {
                 e_height = $elem.css('line-height');
                 e_height = e_height === 'normal' ? parseInt($elem.css('font-size')) : e_height;
                 e_top = ($elem.css('padding-top') != 'auto' ? parseInt($elem.css('padding-top')) : 0);
             } else {
-                e_height = $elem.outerHeight();
-                if (e_height <= 0) {
-                    e_height = ($elem.css('padding-top') != 'auto' ? parseInt($elem.css('padding-top')) : 0);
-                    e_height += ($elem.css('padding-bottom') != 'auto' ? parseInt($elem.css('padding-bottom')) : 0);
-                    e_height += ($elem.css('height') != 'auto' ? parseInt($elem.css('height')) : 0);
-                }
+                if (e_boxSizing != null && e_boxSizing.toLowerCase() == "border-box") { //LG: Added
+                    e_height = $elem.height(); //LG: Added
+                } //LG: Added
+                else { //LG: Added
+                    e_height = $elem.outerHeight();
+
+                    if (e_height <= 0) {
+                        e_height = ($elem.css('padding-top') != 'auto' ? parseInt($elem.css('padding-top')) : 0);
+                        e_height += ($elem.css('padding-bottom') != 'auto' ? parseInt($elem.css('padding-bottom')) : 0);
+                        e_height += ($elem.css('height') != 'auto' ? parseInt($elem.css('height')) : 0);
+                    }
+                } //LG: Added
             }
 
             e_top += ($elem.css('margin-top') != 'auto' ? parseInt($elem.css('margin-top')) : 0);
 
             e_margin_left = $elem.css('margin-left') != 'auto' ? parseInt($elem.css('margin-left')) : 0;
             e_margin_left += $elem.css('padding-left') != 'auto' ? parseInt($elem.css('padding-left')) : 0;
+
 
             watermark_label.css({
                 position: 'absolute',
@@ -114,7 +123,8 @@
                 height: e_height,
                 lineHeight: e_height + 'px',
                 textAlign: 'left',
-                pointerEvents: 'none'
+                pointerEvents: 'none',
+                "box-sizing": e_boxSizing //LG: added
             }).data('jq_watermark_element', $elem);
 
             $.watermarker.checkVal($elem.val(), watermark_label);
