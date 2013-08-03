@@ -29,12 +29,12 @@
 		div.message p{
 			padding: 0;
 			margin: 0;
-			color: #fff;		
+			color: #fff;
 		}
 		div.message a,
 		div.message a:visited{
 			color: #64c0b2;
-			text-decoration: none;	
+			text-decoration: none;
 		}
 		div.message a:hover{
 			text-decoration: underline;
@@ -78,7 +78,7 @@
 		form input{
 			margin-top: 5px;
 			height: 20px;
-			margin-bottom: 5px;	
+			margin-bottom: 5px;
 		}
 		form input,
 		form textarea{
@@ -114,7 +114,7 @@
 			display: none;
 		}
 		#hidden_fields:hover .hidden{
-			display: block;			
+			display: block;
 		}
 	</style>
 </head>
@@ -136,7 +136,7 @@
 		<input placeholder="Password" type="password" name="password" value="" id="password" class="jq_watermark" />
 		<input type="submit" name="submit" value="Go" id="submit">
 	</fieldset>
-	
+
 	<fieldset id="other" class="">
 		<legend>Other</legend>
 		<label for="correo">Email:</label><input placeholder="hi@hello.com" type="text" name="correo" value="" id="correo" class="jq_watermark" /><br />
@@ -144,11 +144,11 @@
 		<label for="more">More:</label><input placeholder="More about yourself" type="text" name="more" value="This field has predefined content" id="more" class="jq_watermark" style="width: 400px" /><br />
 		<label for="more">Even more:</label><input placeholder="Tell us even more" type="text" name="even_more" value="" id="even_more" class="jq_watermark" style="width: 400px" /><br />
 		<br/>
-		
+
 		<label for="comments">Comments:</label><br />
 		<textarea id="comments" placeholder="Tell us <strong>what <em>you</em> think<strong>..." class="jq_watermark" rows="3" cols="80"></textarea>
 	</fieldset>
-	
+
 	<fieldset id="hidden_fields" class="">
 		<legend>Test hidden fields</legend>
 		<div class="hidden">
@@ -159,16 +159,11 @@
 </form>
 
 <p class="info">
-	Source Code: <a href="https://github.com/marioestrada/jQuery-Watermark/">GitHub</a> 
+	Source Code: <a href="https://github.com/marioestrada/jQuery-Watermark/">GitHub</a>
 	License: <a href="http://www.opensource.org/licenses/mit-license.php">MIT</a>
 </p>
 
-<!-- <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript">
-  // Load jQuery
-  google.load("jquery", "1");
-</script> -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="jquery.watermark.js"></script>
 <script>
 $(document).ready(function()
@@ -176,6 +171,19 @@ $(document).ready(function()
 	$('#even_more').val('Field filled programmatically with Javascript.').trigger('change');
 });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- !Google Tracking -->
 <script type="text/javascript">
@@ -185,7 +193,7 @@ _gaq.push(['_trackPageview']);
 
 (function() {
 var ga = document.createElement('script');
-ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
     'http://www') + '.google-analytics.com/ga.js';
 ga.setAttribute('async', 'true');
 document.documentElement.firstChild.appendChild(ga);
