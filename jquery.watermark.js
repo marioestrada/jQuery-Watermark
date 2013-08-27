@@ -171,6 +171,7 @@
   $(function () {
     //add temp-show class to page to retrieve actual height
     var newCssClass = document.createElement('style');
+    newCssClass.setAttribute("type", "text/css");
     var newContent = document.createTextNode('.temp-show{position:absolute !important; visibility:hidden !important; display:block !important;}');
     newCssClass.appendChild(newContent);
     var head = document.getElementsByTagName('head')[0];
