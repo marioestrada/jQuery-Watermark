@@ -1,7 +1,7 @@
 {
   "name": "jquery.watermark",
   "preferGlobal": true,
-  "version": "1.3.2",
+  "version": "1.3.3",
   "author": "Mario Estrada <me@mario.ec>",
   "homepage": "http://labs.mario.ec/jq-watermark/",
   "description": "Add default text on form elements that look like watermarks or work as placeholders",
