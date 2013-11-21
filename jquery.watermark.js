@@ -51,10 +51,12 @@
     }
 
     elems.each(function () {
-      var $elem, attr_name, label_text, watermark_container, watermark_label;
+      var $elem, attr_name, label_text, watermark_container, watermark_label, control_id;
       var e_margin_left, e_top = 0, e_height;
 
       $elem = $(this);
+      control_id = $elem.attr('id');
+
       if ($elem.attr('data-jq-watermark') === 'processed') {
         return;
       }
@@ -62,7 +64,7 @@
       attr_name = $elem.attr('placeholder') !== undefined && $elem.attr('placeholder') !== '' ? 'placeholder' : 'title';
       label_text = text === undefined || text === '' ? $(this).attr(attr_name) : text;
       watermark_container = $('<span class="watermark_container"></span>');
-      watermark_label = $('<span class="watermark">' + label_text + '</span>');
+      watermark_label = $('<label class="watermark" for="' + control_id + '">' + label_text + '</label>');
 
       // If used, remove the placeholder attribute to prevent conflicts
       if (attr_name === 'placeholder') {
@@ -121,13 +123,17 @@
         lineHeight: e_height + 'px',
         textAlign: 'left',
         pointerEvents: 'none'
-      }).data('jq_watermark_element', $elem);
+      });
 
       $.watermarker.checkVal($elem.val(), watermark_label);
 
-      watermark_label.click(function () {
-        $($(this).data('jq_watermark_element')).trigger('click').trigger('focus');
-      });
+      if (!control_id) {
+        watermark_label
+          .data('jq_watermark_element', $elem)
+          .click(function () {
+            $($(this).data('jq_watermark_element')).trigger('click').trigger('focus');
+          });
+      }
 
       $elem.before(watermark_label)
         .bind('focus.jq_watermark', function () {
