@@ -93,7 +93,7 @@
       $elem.wrap(watermark_container).attr('data-jq-watermark', 'processed');
 
       if (this.nodeName.toLowerCase() === 'textarea') {
-        e_height = $elem.css('line-height');
+        e_height = parseInt($elem.css('line-height'), 10);
         e_height = e_height === 'normal' ? parseInt($elem.css('font-size'), 10) : e_height;
         e_top = ($elem.css('padding-top') !== 'auto' ? parseInt($elem.css('padding-top'), 10) : 0);
       } else {
