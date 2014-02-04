@@ -39,6 +39,23 @@
       return 'placeholder' in i;
     }
   });
+  
+  $.fn.actualOuterHeight = function () {
+        // find the closest visible parent and get it's hidden children
+        var visibleParent = this.closest(':visible').children(),
+            thisOuterHeight;
+
+        // set a temporary class on the hidden parent of the element
+        visibleParent.addClass('temp-show');
+
+        // get the outer height
+        thisOuterHeight = this.outerHeight();
+
+        // remove the temporary class
+        visibleParent.removeClass('temp-show');
+
+        return thisOuterHeight;
+  };
 
   $.fn.watermark = function (text, options) {
     var elems;
@@ -97,7 +114,7 @@
         e_height = e_height === 'normal' ? parseInt($elem.css('font-size'), 10) : e_height;
         e_top = ($elem.css('padding-top') !== 'auto' ? parseInt($elem.css('padding-top'), 10) : 0);
       } else {
-        e_height = $elem.outerHeight();
+        e_height = $elem.actualOuterHeight();
         if (e_height <= 0) {
           e_height = ($elem.css('padding-top') !== 'auto' ? parseInt($elem.css('padding-top'), 10) : 0);
           e_height += ($elem.css('padding-bottom') !== 'auto' ? parseInt($elem.css('padding-bottom'), 10) : 0);
@@ -157,6 +174,14 @@
   };
 
   $(function () {
+    //add temp-show class to page to retrieve actual height
+    var newCssClass = document.createElement('style');
+    newCssClass.setAttribute("type", "text/css");
+    var newContent = document.createTextNode('.temp-show{position:absolute !important; visibility:hidden !important; display:block !important;}');
+    newCssClass.appendChild(newContent);
+    var head = document.getElementsByTagName('head')[0];
+    head.appendChild(newCssClass);
+    
     $('.jq_watermark').watermark();
   });
 })(jQuery);
