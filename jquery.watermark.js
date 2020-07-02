@@ -129,26 +129,26 @@
       if (!control_id) {
         watermark_label
           .data('jq_watermark_element', $elem)
-          .click(function () {
+          .on('click', function () {
             $($(this).data('jq_watermark_element')).trigger('click').trigger('focus');
           });
       }
 
       $elem.before(watermark_label)
-        .bind('focus.jq_watermark', function () {
+        .on('focus.jq_watermark', function () {
           if (!$.watermarker.checkVal($(this).val(), watermark_label)){
             watermark_label.stop().fadeTo(options.animDuration, options.minOpacity);
           }
         })
-        .bind('blur.jq_watermark change.jq_watermark', function () {
+        .on('blur.jq_watermark change.jq_watermark', function () {
           if (!$.watermarker.checkVal($(this).val(), watermark_label)){
             watermark_label.stop().fadeTo(options.animDuration, 1);
           }
         })
-        .bind('keydown.jq_watermark, paste.jq_watermark', function (e) {
+        .on('keydown.jq_watermark, paste.jq_watermark', function (e) {
           $(watermark_label).hide();
         })
-        .bind('keyup.jq_watermark', function (e) {
+        .on('keyup.jq_watermark', function (e) {
           $.watermarker.checkVal($(this).val(), watermark_label);
         });
     });
