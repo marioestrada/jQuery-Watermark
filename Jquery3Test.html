@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<head>
+	<title>jQuery Placeholder</title>
+	<link href='http://fonts.googleapis.com/css?family=Molengo' rel='stylesheet' type='text/css'>
+	<style type="text/css" media="screen">
+		body{
+			background: #f0f0f0 url(http://mario.ec/images/body_bg.png);
+			font-family: Helvetica, Arial, sans-serif;
+			margin: 10px;
+		}
+		h1{
+			font-family: Gill Sans, Gill Sans MT, Century Gothic, helvetica, arial, serif;
+			font-weight: normal;
+		}
+		div.message{
+			padding: 5px 10px;
+			margin: -10px -10px 0 -10px;
+			background: #672781;
+			border-bottom: 1px solid #000;
+			text-shadow: 0 1px 1px #000;
+			background: -webkit-gradient(linear, left top, left bottom, from(#8632a9), to(#672781));
+			background: -moz-linear-gradient(-90deg, #8632a9, #672781);
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+			-mox-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+			box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+		}
+		div.message p{
+			padding: 0;
+			margin: 0;
+			color: #fff;
+		}
+		div.message a,
+		div.message a:visited{
+			color: #64c0b2;
+			text-decoration: none;
+		}
+		div.message a:hover{
+			text-decoration: underline;
+		}
+		fieldset{
+			margin: 10px;
+			border: 1px solid #d0d0d0;
+			background: #fff;
+			padding: 5px 10px 10px;
+		}
+		#submit{
+			font-size: 0.8em;
+			height: 23px;
+		}
+		legend{
+			font-family: Gill Sans, Gill Sans MT, Century Gothic, helvetica, arial, serif;
+			font-variant: small-caps;
+			margin-bottom: 10px;
+			font-size: 1em;
+		}
+		label:not(.watermark){
+			font-family: Gill Sans, Gill Sans MT, Century Gothic, helvetica, arial, serif;
+			font-style: italic;
+			margin-right: 10px;
+		}
+		p.info{
+			background: #ffc;
+			border: 1px solid #FFE793;
+			padding: 10px;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+		}
+		p.alt{
+			background-color: #f0f0f0 !important;
+			border-color: #d0d0d0 !important;
+		}
+		textarea{
+			padding: 8px;
+		}
+		form input{
+			margin-top: 5px;
+			height: 20px;
+			margin-bottom: 5px;
+		}
+		form input,
+		form textarea{
+			background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#fff));
+			background: -moz-linear-gradient(-90deg, #f6f6f6, #fff);
+			border: 1px solid #bbb;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;
+			box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;
+		}
+		form input[type=submit]{
+			background: -webkit-gradient(linear, left top, left bottom, to(#ddd), from(#eee));
+			background: -moz-linear-gradient(90deg, #ddd, #eee);
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+			box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+		}
+		form input:focus,
+		form textarea:focus{
+			outline: none;
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset, 0 0 2px 1px rgba(237, 187, 66, 0.5);
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset, 0 0 2px 1px rgba(237, 187, 66, 0.5);
+			box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset, 0 0 2px 1px rgba(237, 187, 66, 0.5);
+		}
+		form input,
+		form textarea{
+			-webkit-background-clip: padding-box;
+		}
+		#hidden_fields .hidden{
+			display: none;
+		}
+		#hidden_fields:hover .hidden{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+<div class="message">
+	<p>Visit my website: <a href="http://mario.ec">Mario.EC</a></p>
+</div>
+<h1>jQuery Watermark - Example</h1>
+
+<p class="info">
+	No CSS rules are required for the plugin to work, although you're free to use them. <br />
+	To use just add the class 'jq_watermark' to the form elements and a title attribute to use as the watermarker text.
+</p>
+
+<form action="http://mario.ec" method="post" accept-charset="utf-8">
+	<fieldset id="login" class="">
+		<legend>Login</legend>
+		<input type="text" name="usuario" value="" id="usuario" class="jq_watermark" placeholder="Usuario" />
+		<input placeholder="Password" type="password" name="password" value="" id="password" class="jq_watermark" />
+		<input type="submit" name="submit" value="Go" id="submit">
+	</fieldset>
+
+	<fieldset id="other" class="">
+		<legend>Other</legend>
+		<label for="correo">Email:</label><input placeholder="hi@hello.com" type="text" name="correo" value="" id="correo" class="jq_watermark" /><br />
+		<label for="correo">Date:</label><input placeholder="dd/mm/yyyy" type="text" name="date" value="" id="date" class="jq_watermark" /><br />
+		<label for="more">More:</label><input placeholder="More about yourself" type="text" name="more" value="This field has predefined content" id="more" class="jq_watermark" style="width: 400px" /><br />
+		<label for="more">Even more:</label><input placeholder="Tell us even more" type="text" name="even_more" value="" id="even_more" class="jq_watermark" style="width: 400px" /><br />
+		<br/>
+
+		<label for="comments">Comments:</label><br />
+		<textarea id="comments" placeholder="Tell us <strong>what <em>you</em> think<strong>..." class="jq_watermark" rows="3" cols="80"></textarea>
+	</fieldset>
+
+	<fieldset id="hidden_fields" class="">
+		<legend>Test hidden fields</legend>
+		<div class="hidden">
+		<label for="post">Postal Code:</label><input placeholder="33131" type="text" name="post" value="" id="post" class="jq_watermark" /><br />
+		<label for="street">Street Number:</label><input placeholder="5th Ave." type="text" name="street" value="" id="street" class="jq_watermark" style="width: 400px" /><br />
+		</div>
+	</fieldset>
+</form>
+
+<p class="info">
+	Source Code: <a href="https://github.com/marioestrada/jQuery-Watermark/">GitHub</a>
+	License: <a href="http://www.opensource.org/licenses/mit-license.php">MIT</a>
+</p>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.3.1/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="jquery.watermark.js"></script>
+<script>
+$(document).ready(function()
+{
+	$('#even_more').val('Field filled programmatically with Javascript.').trigger('change');
+});
+</script>
+</body>
